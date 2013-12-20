@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0329BF5418601BCF0021521B /* libturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0329BF4918601BCF0021521B /* libturbojpeg.a */; };
-		0329BF5518601BCF0021521B /* libturbojpeg.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0329BF4A18601BCF0021521B /* libturbojpeg.dylib */; };
-		0329BF5618601BD00021521B /* turbojpeg-static.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0329BF4C18601BCF0021521B /* turbojpeg-static.lib */; };
-		0329BF5718601BD00021521B /* turbojpeg.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0329BF4D18601BCF0021521B /* turbojpeg.lib */; };
-		0329BF5818601BD00021521B /* ofxTurboJpeg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0329BF5018601BCF0021521B /* ofxTurboJpeg.cpp */; };
 		0329BF6C1860242A0021521B /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0329BF5B1860242A0021521B /* ofxBaseGui.cpp */; };
 		0329BF6D1860242A0021521B /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0329BF5D1860242A0021521B /* ofxButton.cpp */; };
 		0329BF6E1860242A0021521B /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0329BF601860242A0021521B /* ofxGuiGroup.cpp */; };
@@ -47,6 +42,13 @@
 		0329BFE11860F4300021521B /* BWLevelsPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0329BFDF1860F4300021521B /* BWLevelsPass.cpp */; };
 		0329BFE71862229F0021521B /* RGBScalePass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0329BFE61862229F0021521B /* RGBScalePass.cpp */; };
 		0329BFEA18622A8C0021521B /* OffsetPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0329BFE918622A8C0021521B /* OffsetPass.cpp */; };
+		03DFD75D1863AEC70011A3F5 /* GlowPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03DFD75C1863AEC70011A3F5 /* GlowPass.cpp */; };
+		03DFD7601864BE8E0011A3F5 /* ColorizePass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03DFD75F1864BE8E0011A3F5 /* ColorizePass.cpp */; };
+		03DFD77C1864C9250011A3F5 /* libturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DFD7711864C9250011A3F5 /* libturbojpeg.a */; };
+		03DFD77D1864C9250011A3F5 /* libturbojpeg.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DFD7721864C9250011A3F5 /* libturbojpeg.dylib */; };
+		03DFD77E1864C9250011A3F5 /* turbojpeg-static.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DFD7741864C9250011A3F5 /* turbojpeg-static.lib */; };
+		03DFD77F1864C9250011A3F5 /* turbojpeg.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DFD7751864C9250011A3F5 /* turbojpeg.lib */; };
+		03DFD7801864C9250011A3F5 /* ofxTurboJpeg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03DFD7781864C9250011A3F5 /* ofxTurboJpeg.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -100,14 +102,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0329BF4618601BCF0021521B /* turbojpeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = turbojpeg.h; sourceTree = "<group>"; };
-		0329BF4918601BCF0021521B /* libturbojpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libturbojpeg.a; sourceTree = "<group>"; };
-		0329BF4A18601BCF0021521B /* libturbojpeg.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libturbojpeg.dylib; sourceTree = "<group>"; };
-		0329BF4C18601BCF0021521B /* turbojpeg-static.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "turbojpeg-static.lib"; sourceTree = "<group>"; };
-		0329BF4D18601BCF0021521B /* turbojpeg.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = turbojpeg.lib; sourceTree = "<group>"; };
-		0329BF4E18601BCF0021521B /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
-		0329BF5018601BCF0021521B /* ofxTurboJpeg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTurboJpeg.cpp; sourceTree = "<group>"; };
-		0329BF5118601BCF0021521B /* ofxTurboJpeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTurboJpeg.h; sourceTree = "<group>"; };
 		0329BF5B1860242A0021521B /* ofxBaseGui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBaseGui.cpp; sourceTree = "<group>"; };
 		0329BF5C1860242A0021521B /* ofxBaseGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBaseGui.h; sourceTree = "<group>"; };
 		0329BF5D1860242A0021521B /* ofxButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxButton.cpp; sourceTree = "<group>"; };
@@ -189,6 +183,18 @@
 		0329BFE8186222A80021521B /* RGBScalePass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBScalePass.h; sourceTree = "<group>"; };
 		0329BFE918622A8C0021521B /* OffsetPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OffsetPass.cpp; sourceTree = "<group>"; };
 		0329BFEB18622A980021521B /* OffsetPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffsetPass.h; sourceTree = "<group>"; };
+		03DFD75C1863AEC70011A3F5 /* GlowPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlowPass.cpp; sourceTree = "<group>"; };
+		03DFD75E1863AED20011A3F5 /* GlowPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlowPass.h; sourceTree = "<group>"; };
+		03DFD75F1864BE8E0011A3F5 /* ColorizePass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorizePass.cpp; sourceTree = "<group>"; };
+		03DFD7611864BE990011A3F5 /* ColorizePass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorizePass.h; sourceTree = "<group>"; };
+		03DFD76E1864C9250011A3F5 /* turbojpeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = turbojpeg.h; sourceTree = "<group>"; };
+		03DFD7711864C9250011A3F5 /* libturbojpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libturbojpeg.a; sourceTree = "<group>"; };
+		03DFD7721864C9250011A3F5 /* libturbojpeg.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libturbojpeg.dylib; sourceTree = "<group>"; };
+		03DFD7741864C9250011A3F5 /* turbojpeg-static.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "turbojpeg-static.lib"; sourceTree = "<group>"; };
+		03DFD7751864C9250011A3F5 /* turbojpeg.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = turbojpeg.lib; sourceTree = "<group>"; };
+		03DFD7761864C9250011A3F5 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
+		03DFD7781864C9250011A3F5 /* ofxTurboJpeg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTurboJpeg.cpp; sourceTree = "<group>"; };
+		03DFD7791864C9250011A3F5 /* ofxTurboJpeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTurboJpeg.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -224,16 +230,16 @@
 				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
-				0329BF5618601BD00021521B /* turbojpeg-static.lib in Frameworks */,
-				0329BF5418601BCF0021521B /* libturbojpeg.a in Frameworks */,
+				03DFD77E1864C9250011A3F5 /* turbojpeg-static.lib in Frameworks */,
+				03DFD77C1864C9250011A3F5 /* libturbojpeg.a in Frameworks */,
 				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
 				E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */,
 				E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */,
 				E45BE97E0E8CC7DD009D7055 /* Carbon.framework in Frameworks */,
 				E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */,
 				E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */,
-				0329BF5518601BCF0021521B /* libturbojpeg.dylib in Frameworks */,
-				0329BF5718601BD00021521B /* turbojpeg.lib in Frameworks */,
+				03DFD77D1864C9250011A3F5 /* libturbojpeg.dylib in Frameworks */,
+				03DFD77F1864C9250011A3F5 /* turbojpeg.lib in Frameworks */,
 				E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */,
 				E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */,
 				E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */,
@@ -247,77 +253,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0329BF3B18601BCF0021521B /* ofxTurboJpeg */ = {
-			isa = PBXGroup;
-			children = (
-				0329BF4318601BCF0021521B /* libs */,
-				0329BF4E18601BCF0021521B /* Readme.md */,
-				0329BF4F18601BCF0021521B /* src */,
-			);
-			path = ofxTurboJpeg;
-			sourceTree = "<group>";
-		};
-		0329BF4318601BCF0021521B /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				0329BF4418601BCF0021521B /* turbo-jpeg */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
-		0329BF4418601BCF0021521B /* turbo-jpeg */ = {
-			isa = PBXGroup;
-			children = (
-				0329BF4518601BCF0021521B /* include */,
-				0329BF4718601BCF0021521B /* lib */,
-			);
-			path = "turbo-jpeg";
-			sourceTree = "<group>";
-		};
-		0329BF4518601BCF0021521B /* include */ = {
-			isa = PBXGroup;
-			children = (
-				0329BF4618601BCF0021521B /* turbojpeg.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		0329BF4718601BCF0021521B /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				0329BF4818601BCF0021521B /* osx */,
-				0329BF4B18601BCF0021521B /* Win32 */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		0329BF4818601BCF0021521B /* osx */ = {
-			isa = PBXGroup;
-			children = (
-				0329BF4918601BCF0021521B /* libturbojpeg.a */,
-				0329BF4A18601BCF0021521B /* libturbojpeg.dylib */,
-			);
-			path = osx;
-			sourceTree = "<group>";
-		};
-		0329BF4B18601BCF0021521B /* Win32 */ = {
-			isa = PBXGroup;
-			children = (
-				0329BF4C18601BCF0021521B /* turbojpeg-static.lib */,
-				0329BF4D18601BCF0021521B /* turbojpeg.lib */,
-			);
-			path = Win32;
-			sourceTree = "<group>";
-		};
-		0329BF4F18601BCF0021521B /* src */ = {
-			isa = PBXGroup;
-			children = (
-				0329BF5018601BCF0021521B /* ofxTurboJpeg.cpp */,
-				0329BF5118601BCF0021521B /* ofxTurboJpeg.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		0329BF591860242A0021521B /* ofxGui */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,6 +360,10 @@
 				0329BFE8186222A80021521B /* RGBScalePass.h */,
 				0329BFE918622A8C0021521B /* OffsetPass.cpp */,
 				0329BFEB18622A980021521B /* OffsetPass.h */,
+				03DFD75C1863AEC70011A3F5 /* GlowPass.cpp */,
+				03DFD75E1863AED20011A3F5 /* GlowPass.h */,
+				03DFD75F1864BE8E0011A3F5 /* ColorizePass.cpp */,
+				03DFD7611864BE990011A3F5 /* ColorizePass.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -440,12 +379,84 @@
 			path = example/src;
 			sourceTree = "<group>";
 		};
+		03DFD7631864C9250011A3F5 /* ofxTurboJpeg */ = {
+			isa = PBXGroup;
+			children = (
+				03DFD76B1864C9250011A3F5 /* libs */,
+				03DFD7761864C9250011A3F5 /* Readme.md */,
+				03DFD7771864C9250011A3F5 /* src */,
+			);
+			name = ofxTurboJpeg;
+			path = ../../../addons/ofxTurboJpeg;
+			sourceTree = "<group>";
+		};
+		03DFD76B1864C9250011A3F5 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				03DFD76C1864C9250011A3F5 /* turbo-jpeg */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		03DFD76C1864C9250011A3F5 /* turbo-jpeg */ = {
+			isa = PBXGroup;
+			children = (
+				03DFD76D1864C9250011A3F5 /* include */,
+				03DFD76F1864C9250011A3F5 /* lib */,
+			);
+			path = "turbo-jpeg";
+			sourceTree = "<group>";
+		};
+		03DFD76D1864C9250011A3F5 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				03DFD76E1864C9250011A3F5 /* turbojpeg.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		03DFD76F1864C9250011A3F5 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				03DFD7701864C9250011A3F5 /* osx */,
+				03DFD7731864C9250011A3F5 /* Win32 */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		03DFD7701864C9250011A3F5 /* osx */ = {
+			isa = PBXGroup;
+			children = (
+				03DFD7711864C9250011A3F5 /* libturbojpeg.a */,
+				03DFD7721864C9250011A3F5 /* libturbojpeg.dylib */,
+			);
+			path = osx;
+			sourceTree = "<group>";
+		};
+		03DFD7731864C9250011A3F5 /* Win32 */ = {
+			isa = PBXGroup;
+			children = (
+				03DFD7741864C9250011A3F5 /* turbojpeg-static.lib */,
+				03DFD7751864C9250011A3F5 /* turbojpeg.lib */,
+			);
+			path = Win32;
+			sourceTree = "<group>";
+		};
+		03DFD7771864C9250011A3F5 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				03DFD7781864C9250011A3F5 /* ofxTurboJpeg.cpp */,
+				03DFD7791864C9250011A3F5 /* ofxTurboJpeg.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				03DFD7631864C9250011A3F5 /* ofxTurboJpeg */,
 				0329BF751860E6F70021521B /* ofxPostProcessing */,
 				0329BF591860242A0021521B /* ofxGui */,
-				0329BF3B18601BCF0021521B /* ofxTurboJpeg */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -622,7 +633,9 @@
 				0329BFC61860E6F70021521B /* HorizontalTiltShifPass.cpp in Sources */,
 				0329BFC31860E6F70021521B /* FakeSSSPass.cpp in Sources */,
 				0329BFCA1860E6F70021521B /* NoiseWarpPass.cpp in Sources */,
+				03DFD7801864C9250011A3F5 /* ofxTurboJpeg.cpp in Sources */,
 				0329BFC11860E6F70021521B /* DofPass.cpp in Sources */,
+				03DFD7601864BE8E0011A3F5 /* ColorizePass.cpp in Sources */,
 				0329BFEA18622A8C0021521B /* OffsetPass.cpp in Sources */,
 				0329BFBD1860E6F70021521B /* BloomPass.cpp in Sources */,
 				0329BF6C1860242A0021521B /* ofxBaseGui.cpp in Sources */,
@@ -632,6 +645,7 @@
 				0329BFCF1860E6F70021521B /* RimHighlightingPass.cpp in Sources */,
 				0329BF6E1860242A0021521B /* ofxGuiGroup.cpp in Sources */,
 				0329BF701860242A0021521B /* ofxPanel.cpp in Sources */,
+				03DFD75D1863AEC70011A3F5 /* GlowPass.cpp in Sources */,
 				0329BFC71860E6F70021521B /* KaleidoscopePass.cpp in Sources */,
 				0329BFCC1860E6F70021521B /* PostProcessing.cpp in Sources */,
 				0329BFD11860E6F70021521B /* ToonPass.cpp in Sources */,
@@ -645,7 +659,6 @@
 				0329BFC81860E6F70021521B /* LimbDarkeningPass.cpp in Sources */,
 				0329BFBF1860E6F70021521B /* ConvolutionPass.cpp in Sources */,
 				0329BF6F1860242A0021521B /* ofxLabel.cpp in Sources */,
-				0329BF5818601BD00021521B /* ofxTurboJpeg.cpp in Sources */,
 				0329BF6D1860242A0021521B /* ofxButton.cpp in Sources */,
 				0329BFD31860E6F70021521B /* ZoomBlurPass.cpp in Sources */,
 				0329BFD01860E6F70021521B /* SSAOPass.cpp in Sources */,
@@ -819,6 +832,8 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 					"/Users/Josh/Documents/openFrameworks/apps/myApps/FrameSequenceExtractor/ofxTurboJpeg/libs/turbo-jpeg/lib/osx",
 					"/Users/Josh/Documents/openFrameworks/apps/myApps/FrameSequenceExtractor/ofxTurboJpeg/libs/turbo-jpeg/lib/Win32",
+					"/Users/Josh/Documents/openFrameworks/addons/ofxTurboJpeg/libs/turbo-jpeg/lib/osx",
+					"/Users/Josh/Documents/openFrameworks/addons/ofxTurboJpeg/libs/turbo-jpeg/lib/Win32",
 				);
 				PRODUCT_NAME = FrameSequenceExtractorDebug;
 				WRAPPER_EXTENSION = app;
@@ -906,6 +921,8 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"/Users/Josh/Documents/openFrameworks/apps/myApps/FrameSequenceExtractor/ofxTurboJpeg/libs/turbo-jpeg/lib/osx",
 					"/Users/Josh/Documents/openFrameworks/apps/myApps/FrameSequenceExtractor/ofxTurboJpeg/libs/turbo-jpeg/lib/Win32",
+					"/Users/Josh/Documents/openFrameworks/addons/ofxTurboJpeg/libs/turbo-jpeg/lib/osx",
+					"/Users/Josh/Documents/openFrameworks/addons/ofxTurboJpeg/libs/turbo-jpeg/lib/Win32",
 				);
 				PRODUCT_NAME = FrameSequenceExtractor;
 				WRAPPER_EXTENSION = app;

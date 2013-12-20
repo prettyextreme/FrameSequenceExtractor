@@ -53,6 +53,13 @@ class FrameSequenceExtractor : public ofBaseApp{
     ofxFloatSlider greenSlider;
     ofxFloatSlider blueSlider;
     
+    ofxFloatSlider colorizeR;
+    ofxFloatSlider colorizeG;
+    ofxFloatSlider colorizeB;
+    ofxFloatSlider colorizeL;
+    ofxFloatSlider colorizeA;
+    
+    
     
 	ofxPanel gui;
     
@@ -71,6 +78,9 @@ class FrameSequenceExtractor : public ofBaseApp{
     ContrastPass::Ptr contrastPass;
     BWLevelsPass::Ptr levelsPass;
     RGBScalePass::Ptr rgbScalePass;
+    ColorizePass::Ptr colorizePass;
+    OffsetPass::Ptr   offsetPass;
+    ofFbo offsetFbo;
     
     void setPostVals();
 };

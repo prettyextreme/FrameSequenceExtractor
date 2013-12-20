@@ -28,6 +28,14 @@ void FrameSequenceExtractor::setup(){
     gui.add(blueSlider.setup("B Scale",100,0,100));
     
     
+    gui.add(colorizeR.setup("Colorize R",0.5,0,1));
+    gui.add(colorizeG.setup("Colorize G",0.5,0,1));
+    gui.add(colorizeB.setup("Colorize B",0.5,0,1));
+    gui.add(colorizeL.setup("Colorize L",0.5,0,1));
+    gui.add(colorizeA.setup("Colorize Apply",0.5,0,1));
+    
+    
+    
     //gui.add(srcPath.setup("Source File",""));
     gui.add(startButton.setup("START"));
     
@@ -48,8 +56,14 @@ void FrameSequenceExtractor::setup(){
     levelsPass = post.createPass<BWLevelsPass>();
     levelsPass->setEnabled(true);
     
-    post.createPass<OffsetPass>()->setEnabled(true);
-    post.createPass<FakeSSSPass>()->setEnabled(false);
+    offsetPass = post.createPass<OffsetPass>();
+    offsetPass->setEnabled(false);
+    
+    colorizePass = post.createPass<ColorizePass>();
+    colorizePass->setEnabled(true);
+    
+    
+    post.createPass<GlowPass>()->setEnabled(false);
     post.createPass<NoiseWarpPass>()->setEnabled(false);
     post.createPass<LimbDarkeningPass>()->setEnabled(false);
     post.createPass<RimHighlightingPass>()->setEnabled(false);
@@ -59,14 +73,20 @@ void FrameSequenceExtractor::setup(){
     post.setFlip(false);
     
     lastJumpedTestFrame = 0;
-
+    
+    ofFbo::Settings s;
+    s.width = ofNextPow2(1);
+    s.height = ofNextPow2(1024);
+    s.textureTarget = GL_TEXTURE_2D;
+    offsetFbo.allocate(s);
+    
 }
 
 //--------------------------------------------------------------
 void FrameSequenceExtractor::update(){
     
     if(ofGetFrameNum() == 1)
-        loadMovie("/Users/Josh/Desktop/IMG_2348.MOV",1);
+        loadMovie("/Users/Josh/Media/IMG_2352.MOV",1);
     
     if(passNum == 0){
         
@@ -83,75 +103,80 @@ void FrameSequenceExtractor::update(){
         
     }
 
-    //fingerMovie.update();
-    fingerMovie.nextFrame();
-    if(fingerMovie.isFrameNew()){
-        fingerMovie.update();
-        
-        int currentReadFrame = fingerMovie.getCurrentFrame();
-        if(currentReadFrame >= firstReadFrameNum){
-            if( currentReadFrame < (finalReadFrameNum - fadeFrames) ){
-                    //do it up regular. Just save the frame
-                
-                char filename[100];
-                sprintf(filename,"%s/%06d.jpg", destFolder.c_str(), frameNumToSave++);
-                
-                
-                
-                tempFbo.begin();
-                setPostVals();
-                post.begin();
-                
-                ofSetColor(255,255,255,255);
-                fingerMovie.draw(0,0);
-                
-                post.end();
-                tempFbo.end();
-                turboJPEG.save(&tempFbo, filename, 100);
-                
-                
-                
-                
-                //turboJPEG.save(fingerMovie.getPixels(), filename, fingerMovie.getWidth(), fingerMovie.getHeight());
-                
-            } else if(currentReadFrame < finalReadFrameNum){
-                if(currentReadFrame == (finalReadFrameNum - fadeFrames)){
-                    frameNumToSave = 0;//START OVER! We will resave these!
-                }
+    post.setFlip(true);
+    for(int i = 0 ; i < 3 ; i++){
+        //fingerMovie.update();
+        fingerMovie.nextFrame();
+        if(fingerMovie.isFrameNew()){
+            fingerMovie.update();
             
-                char filename[100];
-                sprintf(filename,"%s/%06d.jpg", destFolder.c_str(), frameNumToSave++);
+            int currentReadFrame = fingerMovie.getCurrentFrame();
+            if(currentReadFrame >= firstReadFrameNum){
+                if( currentReadFrame < (finalReadFrameNum - fadeFrames) ){
+                        //do it up regular. Just save the frame
+                    
+                    char filename[100];
+                    sprintf(filename,"%s/%06d.jpg", destFolder.c_str(), frameNumToSave++);
+                    
+                    post.setFlip(true);
+                    
+                    tempFbo.begin();
+                    setPostVals();
+                    post.begin();
+                    
+                    ofSetColor(255,255,255,255);
+                    fingerMovie.draw(0,0);
+                    
+                    post.end();
+                    tempFbo.end();
+                    turboJPEG.save(&tempFbo, filename, 100);
+                    
+                    
+                    
+                    
+                    //turboJPEG.save(fingerMovie.getPixels(), filename, fingerMovie.getWidth(), fingerMovie.getHeight());
+                    
+                } else if(currentReadFrame < finalReadFrameNum){
+                    if(currentReadFrame == (finalReadFrameNum - fadeFrames)){
+                        frameNumToSave = 0;//START OVER! We will resave these!
+                    }
                 
-                
-                setPostVals();
-                post.begin();
-                ofSetColor(255,255,255,255);
-                fingerMovie.draw(0,0);
-                post.end(false);
-                
-                
-                ofImage tempImage;
-                turboJPEG.load(filename, &tempImage);
-                
-                tempFbo.begin();
-                
-                ofSetColor(255,255,255,255);
-                tempImage.draw(0,0);
-                
-                ofSetColor(255,255,255,ofMap(currentReadFrame,finalReadFrameNum - fadeFrames-1,finalReadFrameNum,255,0));
-                post.draw();
-                
-                tempFbo.end();
-                
-                turboJPEG.save(&tempFbo, filename, 100);
-                
-            } else {
-                ofExit();
+                    char filename[100];
+                    sprintf(filename,"%s/%06d.jpg", destFolder.c_str(), frameNumToSave++);
+                    
+                    post.setFlip(false);
+                    
+                    setPostVals();
+                    post.begin();
+                    ofSetColor(255,255,255,255);
+                    fingerMovie.draw(0,0);
+                    post.end(false);
+                    
+                    
+                    ofImage tempImage;
+                    turboJPEG.load(filename, &tempImage);
+                    
+                    tempFbo.begin();
+                    
+                    ofSetColor(255,255,255,255);
+                    tempImage.draw(0,0);
+                    
+                    ofSetColor(255,255,255,ofMap(currentReadFrame,finalReadFrameNum - fadeFrames-1,finalReadFrameNum,255,0));
+                    post.draw();
+                    
+                    tempFbo.end();
+                    
+                    turboJPEG.save(&tempFbo, filename, 100);
+                    
+                } else {
+                    ofExit();
+                }
+            //Save the frame!
             }
-        //Save the frame!
+            
         }
-        
     }
+    post.setFlip(false);
 }
 
 void FrameSequenceExtractor::startPlayback(){
@@ -176,7 +201,26 @@ void FrameSequenceExtractor::setPostVals(){
     rgbScalePass->setRedScale(redSlider/100.0f);
     rgbScalePass->setGreenScale(greenSlider/100.0f);
     rgbScalePass->setBlueScale(blueSlider/100.0f);
-}
+    
+    offsetFbo.begin();
+    ofBackground(127,127,127);
+    
+    for(int y=0;y<1024;y+=ofRandom(2,5)){
+        ofSetColor(ofRandom(100,156),ofRandom(120,130),255);
+        ofRect(0,y,1, 2);
+    }
+    
+//    
+//    for(int y=0;y<1024;y+=20){
+//        ofSetColor(127+10.0*sin(y),127+20*cos((float)y/10.0f),127,255);
+//        ofRect(0,y,1, 20);
+//    }
+    offsetFbo.end();
+    
+    offsetPass->setOffsetFboRef(&offsetFbo);
+    
+    colorizePass->setVals(colorizeR,colorizeG,colorizeB,colorizeL,colorizeA);
+    }
 
 //--------------------------------------------------------------
 void FrameSequenceExtractor::draw(){
