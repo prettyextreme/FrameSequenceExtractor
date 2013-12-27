@@ -379,8 +379,14 @@ void FrameSequenceExtractor::loadMovie(string path, int jumpToFrame){
     tempFboCrossfade.allocate(fingerMovie.getWidth(), fingerMovie.getHeight());
     
     totalReadFrameCt = fingerMovie.getTotalNumFrames();
+    
+    
     firstReadFrameNum = ofMap(inAtPercent,0,100,0,totalReadFrameCt);
     finalReadFrameNum = ofMap(outAtPercent,0,100,0,totalReadFrameCt);
+    
+    //MAKE SURE WE USE AN EVEN NUMBER OF FRAMES!
+    if((finalReadFrameNum - firstReadFrameNum)%2 == 0)
+        finalReadFrameNum--;
     
     sourceFile = path;
     
