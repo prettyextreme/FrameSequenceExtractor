@@ -4,6 +4,7 @@
 #include "ofxTurboJpeg.h"
 #include "ofxGui.h"
 #include "ofxPostProcessing.h"
+#include "ofxPrettyExtremeUtils.h"
 
 class FrameSequenceExtractor : public ofBaseApp{
 
@@ -33,7 +34,7 @@ class FrameSequenceExtractor : public ofBaseApp{
     void startPlayback();
     void loadMovie(string path, int jumpToFrame = 0);
     
-    
+    bool useEffects;
     
 	ofxIntSlider inAtPercent;
 	ofxIntSlider outAtPercent;

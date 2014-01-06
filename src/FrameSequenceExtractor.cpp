@@ -80,6 +80,7 @@ void FrameSequenceExtractor::setup(){
     s.textureTarget = GL_TEXTURE_2D;
     offsetFbo.allocate(s);
     
+    useEffects = false;
 }
 
 //--------------------------------------------------------------
@@ -103,6 +104,10 @@ void FrameSequenceExtractor::update(){
         
     }
 
+    
+    
+    
+    
     post.setFlip(true);
     for(int i = 0 ; i < 3 ; i++){
         //fingerMovie.update();
@@ -118,16 +123,22 @@ void FrameSequenceExtractor::update(){
                     char filename[100];
                     sprintf(filename,"%s/%06d.jpg", destFolder.c_str(), frameNumToSave++);
                     
-                    post.setFlip(true);
+                    if(useEffects)
+                        post.setFlip(true);
                     
                     tempFbo.begin();
-                    setPostVals();
-                    post.begin();
+                    
+                    if(useEffects){
+                        setPostVals();
+                        post.begin();
+                    }
                     
                     ofSetColor(255,255,255,255);
                     fingerMovie.draw(0,0);
                     
-                    post.end();
+                    if(useEffects)
+                        post.end();
+                    
                     tempFbo.end();
                     turboJPEG.save(&tempFbo, filename, 100);
                     
@@ -144,32 +155,50 @@ void FrameSequenceExtractor::update(){
                     char filename[100];
                     sprintf(filename,"%s/%06d.jpg", destFolder.c_str(), frameNumToSave++);
                     
-                    post.setFlip(false);
                     
-                    setPostVals();
-                    post.begin();
-                    ofSetColor(255,255,255,255);
-                    fingerMovie.draw(0,0);
-                    post.end(false);
-                    
-                    
-                    ofImage tempImage;
-                    turboJPEG.load(filename, &tempImage);
-                    
-                    tempFbo.begin();
-                    
-                    ofSetColor(255,255,255,255);
-                    tempImage.draw(0,0);
-                    
-                    ofSetColor(255,255,255,ofMap(currentReadFrame,finalReadFrameNum - fadeFrames-1,finalReadFrameNum,255,0));
-                    post.draw();
-                    
-                    tempFbo.end();
-                    
-                    turboJPEG.save(&tempFbo, filename, 100);
+                    if(useEffects){
+                        post.setFlip(false);
+                        
+                        setPostVals();
+                        post.begin();
+                        ofSetColor(255,255,255,255);
+                        fingerMovie.draw(0,0);
+                        post.end(false);
+                        
+                        
+                        ofImage tempImage;
+                        turboJPEG.load(filename, &tempImage);
+                        
+                        tempFbo.begin();
+                        
+                        ofSetColor(255,255,255,255);
+                        tempImage.draw(0,0);
+                        
+                        ofSetColor(255,255,255,ofMap(currentReadFrame,finalReadFrameNum - fadeFrames-1,finalReadFrameNum,255,0));
+                        post.draw();
+                        
+                        tempFbo.end();
+                        
+                        turboJPEG.save(&tempFbo, filename, 100);
+                    } else {
+                        
+                        tempFbo.begin();
+                        
+                        ofImage tempImage;
+                        turboJPEG.load(filename, &tempImage);
+                        ofSetColor(255,255,255,255);
+                        tempImage.draw(0,0);
+                        
+                        ofSetColor(255,255,255,ofMap(currentReadFrame,finalReadFrameNum - fadeFrames-1,finalReadFrameNum,255,0));
+                        fingerMovie.draw(0,0);
+                        
+                        tempFbo.end();
+                        
+                        turboJPEG.save(&tempFbo, filename, 100);
+                    }
                     
                 } else {
-                    ofExit();
+                    passNum = 0;//free-up to restart process
                 }
             //Save the frame!
             }
@@ -188,6 +217,8 @@ void FrameSequenceExtractor::startPlayback(){
     passNum = 1;
     
     loadMovie(sourceFile);
+    
+    frameNumToSave = 0;
 }
 
 void FrameSequenceExtractor::setPostVals(){
@@ -229,13 +260,23 @@ void FrameSequenceExtractor::draw(){
     setPostVals();
     
     // begin scene to post process
-    post.begin();
+    if(useEffects)
+        post.begin();
     
 	ofSetHexColor(0xFFFFFF);
-    fingerMovie.draw(0,0);
+    
+    ofRectangle drawInRect = ofMaintainAndCenter(ofRectangle(0,0,fingerMovie.width,fingerMovie.height), ofRectangle(0,0,ofGetWidth(),ofGetHeight()));
+    
+    
+    fingerMovie.draw(drawInRect.x,drawInRect.y,drawInRect.width,drawInRect.height);
+    
+    
+    
+    
     ofSetHexColor(0x000000);
     
-    post.end();
+    if(useEffects)
+        post.end();
     
     
     if(passNum == 0)
@@ -244,9 +285,9 @@ void FrameSequenceExtractor::draw(){
         
         
         ofSetHexColor(0xFF0000);
-        ofDrawBitmapString("Source File: " + sourceFile,20,200);
+        ofDrawBitmapString("Source File: " + sourceFile,240,200);
         
-        ofDrawBitmapString("Destination Folder: " + destFolder,20,240);
+        ofDrawBitmapString("Destination Folder: " + destFolder,240,240);
         
         //return;
 
@@ -375,9 +416,16 @@ void FrameSequenceExtractor::loadMovie(string path, int jumpToFrame){
     //fingerMovie.play();
     fingerMovie.setPaused(true);
     
-    tempFbo.allocate(fingerMovie.getWidth(), fingerMovie.getHeight());
-    tempFboCrossfade.allocate(fingerMovie.getWidth(), fingerMovie.getHeight());
-    
+    if(useEffects){
+        tempFbo.allocate(fingerMovie.getWidth(), fingerMovie.getHeight());
+        tempFboCrossfade.allocate(fingerMovie.getWidth(), fingerMovie.getHeight());
+    } else {
+        
+        tempFbo.allocate(fingerMovie.getWidth(), fingerMovie.getHeight(),GL_RGB);
+        tempFboCrossfade.allocate(fingerMovie.getWidth(), fingerMovie.getHeight(),GL_RGB);
+        
+    }
+
     totalReadFrameCt = fingerMovie.getTotalNumFrames();
     
     

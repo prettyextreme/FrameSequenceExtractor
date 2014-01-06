@@ -42,6 +42,7 @@
 		0329BFE11860F4300021521B /* BWLevelsPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0329BFDF1860F4300021521B /* BWLevelsPass.cpp */; };
 		0329BFE71862229F0021521B /* RGBScalePass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0329BFE61862229F0021521B /* RGBScalePass.cpp */; };
 		0329BFEA18622A8C0021521B /* OffsetPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0329BFE918622A8C0021521B /* OffsetPass.cpp */; };
+		03723D99187B00B40096562C /* ofxPrettyExtremeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03723D97187B00B40096562C /* ofxPrettyExtremeUtils.cpp */; };
 		03DFD75D1863AEC70011A3F5 /* GlowPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03DFD75C1863AEC70011A3F5 /* GlowPass.cpp */; };
 		03DFD7601864BE8E0011A3F5 /* ColorizePass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03DFD75F1864BE8E0011A3F5 /* ColorizePass.cpp */; };
 		03DFD77C1864C9250011A3F5 /* libturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DFD7711864C9250011A3F5 /* libturbojpeg.a */; };
@@ -183,6 +184,10 @@
 		0329BFE8186222A80021521B /* RGBScalePass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBScalePass.h; sourceTree = "<group>"; };
 		0329BFE918622A8C0021521B /* OffsetPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OffsetPass.cpp; sourceTree = "<group>"; };
 		0329BFEB18622A980021521B /* OffsetPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffsetPass.h; sourceTree = "<group>"; };
+		03723D94187B00B30096562C /* ShadowCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShadowCircle.png; sourceTree = "<group>"; };
+		03723D95187B00B30096562C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		03723D97187B00B40096562C /* ofxPrettyExtremeUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPrettyExtremeUtils.cpp; sourceTree = "<group>"; };
+		03723D98187B00B40096562C /* ofxPrettyExtremeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPrettyExtremeUtils.h; sourceTree = "<group>"; };
 		03DFD75C1863AEC70011A3F5 /* GlowPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlowPass.cpp; sourceTree = "<group>"; };
 		03DFD75E1863AED20011A3F5 /* GlowPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlowPass.h; sourceTree = "<group>"; };
 		03DFD75F1864BE8E0011A3F5 /* ColorizePass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorizePass.cpp; sourceTree = "<group>"; };
@@ -379,6 +384,34 @@
 			path = example/src;
 			sourceTree = "<group>";
 		};
+		03723D92187B00B30096562C /* ofxPrettyExtremeUtils */ = {
+			isa = PBXGroup;
+			children = (
+				03723D93187B00B30096562C /* data */,
+				03723D95187B00B30096562C /* README.md */,
+				03723D96187B00B40096562C /* src */,
+			);
+			name = ofxPrettyExtremeUtils;
+			path = ../../../addons/ofxPrettyExtremeUtils;
+			sourceTree = "<group>";
+		};
+		03723D93187B00B30096562C /* data */ = {
+			isa = PBXGroup;
+			children = (
+				03723D94187B00B30096562C /* ShadowCircle.png */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		03723D96187B00B40096562C /* src */ = {
+			isa = PBXGroup;
+			children = (
+				03723D97187B00B40096562C /* ofxPrettyExtremeUtils.cpp */,
+				03723D98187B00B40096562C /* ofxPrettyExtremeUtils.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		03DFD7631864C9250011A3F5 /* ofxTurboJpeg */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,6 +487,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				03723D92187B00B30096562C /* ofxPrettyExtremeUtils */,
 				03DFD7631864C9250011A3F5 /* ofxTurboJpeg */,
 				0329BF751860E6F70021521B /* ofxPostProcessing */,
 				0329BF591860242A0021521B /* ofxGui */,
@@ -649,6 +683,7 @@
 				0329BFC71860E6F70021521B /* KaleidoscopePass.cpp in Sources */,
 				0329BFCC1860E6F70021521B /* PostProcessing.cpp in Sources */,
 				0329BFD11860E6F70021521B /* ToonPass.cpp in Sources */,
+				03723D99187B00B40096562C /* ofxPrettyExtremeUtils.cpp in Sources */,
 				0329BFCE1860E6F70021521B /* RGBShiftPass.cpp in Sources */,
 				0329BFC01860E6F70021521B /* DofAltPass.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
